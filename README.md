@@ -9,13 +9,15 @@ Everything lives in `index.html`. Scroll to the `SEASONS` list near the bottom (
 Each build looks like this:
 
 ```js
-{ v: "12.41", note: "Travis Scott event", size: "26 GB", url: "https://your-link-here" },
+{ v: "12.41", note: "Travis Scott event", size: "26 GB", magnet: "magnet:?xt=urn:btih:...", url: "" },
 ```
 
 - `v` – version number
 - `note` – optional label shown under the version
 - `size` – optional
-- `url` – the download link. Leave it as `""` and the button shows **Soon**.
+- `magnet` – the build's magnet link → shows a **Torrent** button
+- `url` – optional direct download link → shows a **Download** button
+- Leave both as `""` and the button shows **Soon**.
 
 Season cards, totals, search and the build popup all update automatically.
 
