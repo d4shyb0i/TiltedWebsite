@@ -334,6 +334,50 @@
   .discord-cta p { opacity: .9; margin-top: 6px; max-width: 520px; }
   .discord-cta .btn { margin-left: auto; background: #fff; color: #3b2bb8; }
 
+  /* ---------- DONATE ---------- */
+  .btn-donate { background: var(--accent); color: #111; }
+  .nav-donate {
+    display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 14px;
+    border-radius: 10px; border: 1px solid rgba(255, 210, 31, 0.5); color: var(--accent);
+    font-weight: 700; font-size: 0.9rem; white-space: nowrap; transition: background .2s, transform .15s;
+  }
+  .nav-donate:hover { background: rgba(255, 210, 31, 0.1); transform: translateY(-1px); }
+  .cta-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+  .donate-cta {
+    position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 14px;
+    padding: 32px; border-radius: 20px; background: var(--accent); color: #111;
+  }
+  .donate-cta::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg, rgba(0,0,0,.05) 0 2px, transparent 2px 14px);
+  }
+  .donate-cta > * { position: relative; }
+  .donate-cta h2 { font-family: var(--display); font-weight: 400; font-size: 2.2rem; text-transform: uppercase; line-height: 1; }
+  .donate-cta p { opacity: .8; }
+  .donate-cta .btn { align-self: flex-start; background: #111; color: var(--accent); }
+  .cta-row .discord-cta { flex-direction: column; align-items: flex-start; justify-content: center; }
+  .cta-row .discord-cta .btn { margin-left: 0; }
+
+  /* welcome popup */
+  .welcome .modal-card { max-width: 460px; text-align: center; }
+  .welcome-top {
+    position: relative; padding: 34px 26px 26px; overflow: hidden;
+    background: linear-gradient(135deg, #5865f2, var(--accent-2));
+  }
+  .welcome-top::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg, rgba(255,255,255,.07) 0 2px, transparent 2px 14px);
+  }
+  .welcome-top > * { position: relative; }
+  .welcome-top .logo-mark { width: 54px; height: 54px; margin: 0 auto 14px; border-radius: 12px; }
+  .welcome-top .logo-mark::after { width: 18px; height: 24px; }
+  .welcome-top h3 { font-family: var(--display); font-weight: 400; font-size: 2.3rem; text-transform: uppercase; line-height: 1.05; }
+  .welcome-top p { opacity: .92; margin-top: 8px; font-size: 0.96rem; }
+  .welcome-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; }
+  .welcome-body .btn { justify-content: center; width: 100%; }
+  .welcome-skip { color: var(--muted); font-size: 0.88rem; margin-top: 4px; padding: 6px; }
+  .welcome-skip:hover { color: var(--text); }
+
   /* ---------- FOOTER ---------- */
   footer { border-top: 1px solid var(--line); padding: 36px 0 48px; margin-top: 32px; color: var(--muted); font-size: 0.88rem; }
   footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
@@ -358,6 +402,11 @@
     .nav-discord { padding: 0 8px; }
     .discord-cta { padding: 28px; }
     .discord-cta .btn { margin-left: 0; }
+    .cta-row { grid-template-columns: 1fr; }
+    .nav-donate span { display: none; }
+    .nav-donate { padding: 0 9px; }
+    nav .wrap { gap: 10px; padding: 0 14px; }
+    .logo { font-size: 1.3rem; }
     .hero { padding: 64px 0 48px; }
     .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 40px; }
     .stat { min-width: 0; padding: 14px; }
@@ -388,6 +437,7 @@
       <kbd>/</kbd>
     </label>
     <a class="nav-discord discord-link" href="#" target="_blank" rel="noopener"><img src="assets/discord.png" alt=""><span>Join Discord</span></a>
+    <a class="nav-donate donate-link" href="#" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5v2.5M12 2.5v2.5"/></svg><span>Support</span></a>
   </div>
 </nav>
 
@@ -401,7 +451,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
       <a href="#" class="btn btn-discord discord-link" target="_blank" rel="noopener"><img src="assets/discord.png" alt="">Join the Discord</a>
-      <a href="#how" class="btn btn-ghost">How to play them</a>
+      <a href="#" class="btn btn-ghost donate-link" target="_blank" rel="noopener" style="color:var(--accent)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5v2.5M12 2.5v2.5"/></svg>Support Tilted</a>
     </div>
     <div class="stats" id="stats"></div>
   </div>
@@ -480,13 +530,20 @@
   </section>
   <section class="block" id="discord">
     <div class="wrap">
-      <div class="discord-cta reveal">
-        <img src="assets/discord.png" alt="Discord">
-        <div>
-          <h2>Join the Tilted Discord</h2>
-          <p>Get help launching builds, request versions you want added, and hear first when new builds drop.</p>
+      <div class="cta-row">
+        <div class="discord-cta reveal">
+          <img src="assets/discord.png" alt="Discord">
+          <div>
+            <h2>Join the Tilted Discord</h2>
+            <p>Get help launching builds, request versions you want added, and hear first when new builds drop.</p>
+          </div>
+          <a href="#" class="btn discord-link" target="_blank" rel="noopener">Join Discord</a>
         </div>
-        <a href="#" class="btn discord-link" target="_blank" rel="noopener">Join Discord</a>
+        <div class="donate-cta reveal">
+          <h2>Keep Tilted ad-free</h2>
+          <p>No ads, no fake download buttons. If Tilted helped you drop back in, a coffee helps keep it running.</p>
+          <a href="#" class="btn donate-link" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5v2.5M12 2.5v2.5"/></svg>Buy me a coffee</a>
+        </div>
       </div>
     </div>
   </section>
@@ -511,6 +568,22 @@
   </div>
 </div>
 
+<div class="modal welcome" id="welcome" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="w-title">
+    <div class="welcome-top">
+      <button class="modal-close" id="w-close" aria-label="Close">&times;</button>
+      <div class="logo-mark"></div>
+      <h3 id="w-title">Welcome to Tilted</h3>
+      <p>Every OG Fortnite build, free and with zero ads. Join the community, and if you can, help keep it that way.</p>
+    </div>
+    <div class="welcome-body">
+      <a href="#" class="btn btn-discord discord-link" target="_blank" rel="noopener"><img src="assets/discord.png" alt="">Join the Discord</a>
+      <a href="#" class="btn btn-donate donate-link" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5v2.5M12 2.5v2.5"/></svg>Support Tilted</a>
+      <button class="welcome-skip" id="w-skip">Maybe later, take me to the builds</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -529,6 +602,10 @@
    ===================================================================== */
 /* Put your Discord invite link here */
 const DISCORD_URL = "https://discord.gg/projecttilted";
+
+/* Your donation link, and whether to show the welcome popup on someone's first visit */
+const DONATE_URL = "https://buymeacoffee.com/projecttilted";
+const SHOW_WELCOME = true;
 
 /* Cover art: drop an image in assets/seasons/ with the file name shown in
    each season's `art` field (e.g. assets/seasons/c2s2.jpg). If the file
@@ -823,7 +900,8 @@ document.addEventListener("click", (e) => {
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    if ($("#modal").classList.contains("open")) closeModal();
+    if ($("#welcome").classList.contains("open")) closeWelcome();
+    else if ($("#modal").classList.contains("open")) closeModal();
     else if (document.activeElement === $("#q")) { $("#q").value = ""; runSearch(""); $("#q").blur(); }
   }
   if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
@@ -853,6 +931,28 @@ SEASONS.forEach((s, i) => {
 });
 
 document.querySelectorAll(".discord-link").forEach((a) => { a.href = DISCORD_URL; });
+document.querySelectorAll(".donate-link").forEach((a) => { a.href = DONATE_URL; });
+
+/* welcome popup: shows once per visitor */
+function closeWelcome() {
+  $("#welcome").classList.remove("open");
+  $("#welcome").setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  try { localStorage.setItem("tilted-welcomed", "1"); } catch (e) {}
+}
+(function () {
+  let seen = false;
+  try { seen = localStorage.getItem("tilted-welcomed") === "1"; } catch (e) {}
+  if (!SHOW_WELCOME || seen) return;
+  setTimeout(() => {
+    $("#welcome").classList.add("open");
+    $("#welcome").setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }, 700);
+})();
+$("#welcome").addEventListener("click", (e) => {
+  if (e.target.id === "welcome" || e.target.closest("#w-close") || e.target.closest("#w-skip") || e.target.closest("a")) closeWelcome();
+});
 
 renderStats();
 renderFilters();

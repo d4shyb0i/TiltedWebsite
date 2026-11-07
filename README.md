@@ -25,6 +25,10 @@ Season cards, totals, search and the build popup all update automatically.
 
 In `index.html`, set `DISCORD_URL` (just above the `SEASONS` list) to your invite link. It updates all three Discord buttons.
 
+## Donation link and welcome popup
+
+`DONATE_URL` (next to `DISCORD_URL`) sets every Support button. New visitors see a welcome popup once; set `SHOW_WELCOME = false` to turn it off.
+
 ## Season cover art
 
 Put images in `assets/seasons/` — see the README in that folder for the file names.
