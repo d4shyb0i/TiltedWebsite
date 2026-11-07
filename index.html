@@ -1,255 +1,829 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortnite Builds Archive</title>
-    <style>
-        :root {
-            --bg-color: #0b0e14;
-            --card-bg: #131722;
-            --text-main: #ffffff;
-            --text-muted: #848d9a;
-            --accent-blue: #0070f3;
-            --border-color: #202632;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tilted — OG Fortnite Build Archive</title>
+<meta name="description" content="Download old Fortnite builds from Chapter 1 and Chapter 2, sorted by season.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07080c;
+    --bg-2: #0d0f16;
+    --card: #12151f;
+    --line: #1f2433;
+    --text: #f4f5f8;
+    --muted: #8a92a6;
+    --accent: #ffd21f;      /* loot yellow */
+    --accent-2: #8b5cff;    /* storm purple */
+    --radius: 14px;
+    --display: "Anton", Impact, "Arial Narrow", sans-serif;
+    --body: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(7, 8, 12, 0.78);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 1.6rem; letter-spacing: 1px; }
+  .logo-mark {
+    width: 30px; height: 30px; background: var(--accent);
+    transform: rotate(-12deg); border-radius: 6px;
+    display: grid; place-items: center;
+    box-shadow: 0 0 24px rgba(255, 210, 31, 0.35);
+  }
+  .logo-mark::after { content: ""; width: 10px; height: 14px; background: var(--bg); transform: skewX(-8deg); }
+  .nav-links { display: flex; gap: 22px; color: var(--muted); font-weight: 500; font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--text); }
+  .search {
+    margin-left: auto; position: relative; width: 300px; max-width: 42vw;
+  }
+  .search input {
+    width: 100%; height: 40px; padding: 0 44px 0 40px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    color: var(--text); font: inherit; font-size: 0.92rem; outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .search input::placeholder { color: #5d6478; }
+  .search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 210, 31, 0.15); }
+  .search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: #5d6478; }
+  .search kbd {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 5px; padding: 1px 7px;
+  }
 
-        .archive-container {
-            width: 100%;
-            max-width: 900px;
-        }
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding: 96px 0 72px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40% -10% auto auto; width: 820px; height: 820px;
+    background: radial-gradient(circle, rgba(139, 92, 255, 0.28), transparent 62%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 30% 40%, #000 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 10%, transparent 70%);
+    opacity: .45; pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent); background: rgba(255, 210, 31, 0.08);
+    border: 1px solid rgba(255, 210, 31, 0.25); padding: 6px 12px; border-radius: 999px;
+  }
+  .eyebrow i { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+  .hero h1 {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(3rem, 8vw, 6.4rem); line-height: 0.95; letter-spacing: 0.5px;
+    text-transform: uppercase; margin: 22px 0 20px; max-width: 900px;
+  }
+  .hero h1 .hl {
+    color: var(--bg); background: var(--accent); padding: 0 14px;
+    display: inline-block; transform: rotate(-2deg); margin: 6px 0;
+  }
+  .hero p.lead { color: var(--muted); font-size: 1.15rem; max-width: 560px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    height: 48px; padding: 0 22px; border-radius: 10px; font-weight: 700;
+    transition: transform .15s, background .2s, border-color .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--accent); color: #111; box-shadow: 0 8px 30px rgba(255, 210, 31, 0.25); }
+  .btn-ghost { border: 1px solid var(--line); background: var(--bg-2); }
+  .btn-ghost:hover { border-color: #39405a; }
 
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
+  .stats { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 56px; }
+  .stat {
+    min-width: 170px; padding: 18px 22px;
+    background: linear-gradient(180deg, var(--card), var(--bg-2));
+    border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .stat b { display: block; font-family: var(--display); font-weight: 400; font-size: 2.2rem; line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: 0.85rem; font-weight: 500; }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
+  /* ---------- BUILDS ---------- */
+  section.block { padding: 64px 0; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+  .section-head h2 { font-family: var(--display); font-weight: 400; font-size: 2.6rem; text-transform: uppercase; letter-spacing: .5px; line-height: 1; }
+  .section-head p { color: var(--muted); margin-top: 8px; }
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    height: 38px; padding: 0 16px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+    border: 1px solid var(--line); background: var(--bg-2); color: var(--muted);
+    transition: all .2s;
+  }
+  .chip:hover { color: var(--text); border-color: #39405a; }
+  .chip.active { background: var(--text); color: var(--bg); border-color: var(--text); }
 
-        .chapter-section {
-            margin-bottom: 35px;
-        }
+  .chapter { margin-bottom: 48px; }
+  .chapter-title {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
+    font-family: var(--display); font-weight: 400; font-size: 1.6rem; text-transform: uppercase; letter-spacing: .5px;
+  }
+  .chapter-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .chapter-title small {
+    font-family: var(--body); font-size: 0.78rem; font-weight: 600; letter-spacing: .5px;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  }
 
-        .chapter-header {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 
-        .chapter-header span {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            background: var(--card-bg);
-            padding: 4px 10px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
+  .season {
+    position: relative; overflow: hidden; text-align: left;
+    border-radius: var(--radius); border: 1px solid var(--line);
+    background: var(--card); min-height: 230px;
+    display: flex; flex-direction: column;
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .25s;
+  }
+  .season:hover, .season:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--c1);
+    box-shadow: 0 18px 50px -18px var(--c1);
+    outline: none;
+  }
+  .season-art {
+    position: relative; height: 120px; overflow: hidden;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+  }
+  .season-art::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg, rgba(255,255,255,.07) 0 2px, transparent 2px 14px);
+  }
+  .season-art::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 50%;
+    background: linear-gradient(transparent, var(--card));
+  }
+  .season-num {
+    position: absolute; right: 12px; top: -14px;
+    font-family: var(--display); font-size: 8.5rem; line-height: 1;
+    color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.55);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .season:hover .season-num { transform: translateX(-8px) rotate(-4deg); }
+  .season-tag {
+    position: absolute; left: 16px; top: 14px; z-index: 1;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    background: rgba(0,0,0,.35); backdrop-filter: blur(6px);
+    padding: 4px 9px; border-radius: 6px;
+  }
+  .season-body { padding: 4px 18px 18px; position: relative; z-index: 1; display: flex; flex-direction: column; flex: 1; }
+  .season-name { font-family: var(--display); font-weight: 400; font-size: 1.7rem; text-transform: uppercase; line-height: 1.1; }
+  .season-theme { color: var(--muted); font-size: 0.88rem; margin-top: 2px; }
+  .season-meta {
+    display: flex; gap: 16px; margin-top: auto; padding-top: 16px;
+    font-size: 0.85rem; color: var(--muted);
+  }
+  .season-meta b { color: var(--text); font-weight: 700; }
+  .season-go {
+    margin-left: auto; color: var(--c1); font-weight: 700;
+    transition: transform .2s;
+  }
+  .season:hover .season-go { transform: translateX(4px); }
 
-        .season-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 16px;
-        }
+  /* search results */
+  .results { display: none; }
+  .results.show { display: block; }
+  .results-head { color: var(--muted); margin-bottom: 14px; }
+  .empty { padding: 48px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: var(--radius); }
 
-        .season-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            transition: border-color 0.2s ease, transform 0.2s ease;
-            cursor: pointer;
-        }
+  /* ---------- BUILD LIST (shared by modal + search) ---------- */
+  .build-list { display: flex; flex-direction: column; gap: 8px; }
+  .build {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px;
+    padding: 12px 14px; border-radius: 10px;
+    background: var(--bg-2); border: 1px solid var(--line);
+    transition: border-color .2s;
+  }
+  .build:hover { border-color: #39405a; }
+  .build-ver {
+    font-family: var(--mono); font-weight: 700; font-size: 1rem;
+    min-width: 78px; padding: 6px 10px; border-radius: 7px; text-align: center;
+    background: rgba(255,255,255,.05); border: 1px solid var(--line);
+  }
+  .build-info { min-width: 0; }
+  .build-info .t { font-weight: 600; }
+  .build-info .s { color: var(--muted); font-size: 0.82rem; }
+  .build-actions { display: flex; gap: 8px; align-items: center; }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center;
+    border: 1px solid var(--line); color: var(--muted); transition: all .2s;
+  }
+  .icon-btn:hover { color: var(--text); border-color: #39405a; }
+  .dl {
+    height: 36px; padding: 0 14px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent); color: #111; transition: transform .15s;
+  }
+  .dl:hover { transform: translateY(-1px); }
+  .dl.off { background: transparent; color: var(--muted); border: 1px dashed var(--line); cursor: not-allowed; }
+  .dl.off:hover { transform: none; }
 
-        .season-card:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
+  /* ---------- MODAL ---------- */
+  .modal {
+    position: fixed; inset: 0; z-index: 100;
+    display: grid; place-items: center; padding: 24px;
+    background: rgba(3, 4, 7, .72); backdrop-filter: blur(6px);
+    opacity: 0; pointer-events: none; transition: opacity .2s;
+  }
+  .modal.open { opacity: 1; pointer-events: auto; }
+  .modal-card {
+    width: 100%; max-width: 640px; max-height: 86vh; display: flex; flex-direction: column;
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    transform: translateY(16px) scale(.98); transition: transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .modal.open .modal-card { transform: none; }
+  .modal-top {
+    position: relative; padding: 26px 24px 22px; overflow: hidden;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+  }
+  .modal-top::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-55deg, rgba(255,255,255,.07) 0 2px, transparent 2px 14px),
+                linear-gradient(transparent 30%, rgba(0,0,0,.45));
+  }
+  .modal-top > * { position: relative; }
+  .modal-top .k { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: .85; }
+  .modal-top h3 { font-family: var(--display); font-weight: 400; font-size: 2.6rem; text-transform: uppercase; line-height: 1.05; }
+  .modal-top p { opacity: .9; font-size: 0.92rem; }
+  .modal-close {
+    position: absolute; right: 14px; top: 14px; width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(0,0,0,.35); display: grid; place-items: center; font-size: 1.2rem;
+  }
+  .modal-close:hover { background: rgba(0,0,0,.6); }
+  .modal-body { padding: 18px 20px 22px; overflow-y: auto; }
 
-        .season-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
+  /* ---------- HOW TO ---------- */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .step { padding: 24px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); }
+  .step-n {
+    font-family: var(--display); font-size: 1.1rem; width: 40px; height: 40px; border-radius: 10px;
+    display: grid; place-items: center; background: var(--accent); color: #111; transform: rotate(-6deg);
+    margin-bottom: 16px;
+  }
+  .step h4 { font-size: 1.1rem; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 0.93rem; }
 
-        .meta-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
+  /* ---------- FAQ ---------- */
+  .faq { display: flex; flex-direction: column; gap: 10px; max-width: 820px; }
+  details { border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+  summary {
+    list-style: none; cursor: pointer; padding: 18px 20px; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.4rem; color: var(--muted); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { padding: 0 20px 18px; color: var(--muted); }
 
-        .meta-item strong {
-            color: var(--text-main);
-        }
-    </style>
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid var(--line); padding: 36px 0 48px; margin-top: 32px; color: var(--muted); font-size: 0.88rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+
+  /* toast */
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); z-index: 200;
+    background: var(--text); color: var(--bg); font-weight: 700; font-size: 0.9rem;
+    padding: 10px 18px; border-radius: 10px; opacity: 0; transition: all .25s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .search { max-width: none; width: auto; flex: 1; }
+    .search kbd { display: none; }
+    .hero { padding: 64px 0 48px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 40px; }
+    .stat { min-width: 0; padding: 14px; }
+    .stat b { font-size: 1.6rem; }
+    .stat span { font-size: 0.75rem; }
+    .build { grid-template-columns: auto 1fr; }
+    .build-actions { grid-column: 1 / -1; justify-content: flex-end; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="archive-container">
-        <header>
-            <h1>Fortnite Build Archive</h1>
-            <p>Explore standalone historical archive builds, download statistics, and metadata.</p>
-        </header>
-
-        <!-- CHAPTER 2 -->
-        <section class="chapter-section">
-            <div class="chapter-header">
-                <h2>Chapter 2</h2>
-                <span>Showing partial data</span>
-            </div>
-            <div class="season-grid">
-                <div class="season-card">
-                    <div class="season-title">Season 2</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>34.7K</strong></div>
-                        <div class="meta-item">Builds: <strong>11</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 1</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>7,083</strong></div>
-                        <div class="meta-item">Builds: <strong>11</strong></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CHAPTER 1 -->
-        <section class="chapter-section">
-            <div class="chapter-header">
-                <h2>Chapter 1</h2>
-                <span>10 Seasons</span>
-            </div>
-            <div class="season-grid">
-                <div class="season-card">
-                    <div class="season-title">Season X</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>20K</strong></div>
-                        <div class="meta-item">Builds: <strong>7</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 9</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>16.6K</strong></div>
-                        <div class="meta-item">Builds: <strong>9</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 8</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>8,179</strong></div>
-                        <div class="meta-item">Builds: <strong>6</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 7</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>9,157</strong></div>
-                        <div class="meta-item">Builds: <strong>5</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 6</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>9,065</strong></div>
-                        <div class="meta-item">Builds: <strong>14</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 5</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>6,735</strong></div>
-                        <div class="meta-item">Builds: <strong>8</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 4</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>13.7K</strong></div>
-                        <div class="meta-item">Builds: <strong>8</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 3</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>38.7K</strong></div>
-                        <div class="meta-item">Builds: <strong>8</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 2</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>5,780</strong></div>
-                        <div class="meta-item">Builds: <strong>7</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Season 1</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>9,334</strong></div>
-                        <div class="meta-item">Builds: <strong>6</strong></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EARLY FORTNITE -->
-        <section class="chapter-section">
-            <div class="chapter-header">
-                <h2>Fortnite Legacy</h2>
-                <span>Pre-Seasons</span>
-            </div>
-            <div class="season-grid">
-                <div class="season-card">
-                    <div class="season-title">Pre Season</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>5,527</strong></div>
-                        <div class="meta-item">Builds: <strong>3</strong></div>
-                    </div>
-                </div>
-                <div class="season-card">
-                    <div class="season-title">Online Testing</div>
-                    <div class="meta-row">
-                        <div class="meta-item">Downloads: <strong>4,067</strong></div>
-                        <div class="meta-item">Builds: <strong>4</strong></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo"><span class="logo-mark"></span>TILTED</a>
+    <div class="nav-links">
+      <a href="#builds">Builds</a>
+      <a href="#how">How to play</a>
+      <a href="#faq">FAQ</a>
     </div>
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search builds (e.g. 12.41)" autocomplete="off" aria-label="Search builds">
+      <kbd>/</kbd>
+    </label>
+  </div>
+</nav>
 
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><i></i>OG Fortnite build archive</span>
+    <h1>Drop back into<br><span class="hl">any season</span></h1>
+    <p class="lead">Every classic Fortnite build from Chapter 1 and Chapter 2, sorted by season. Pick a season, pick a version, hit download.</p>
+    <div class="hero-cta">
+      <a href="#builds" class="btn btn-primary">Browse builds
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+      <a href="#how" class="btn btn-ghost">How to play them</a>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="builds">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Pick your season</h2>
+          <p>Click a season to see every build in it.</p>
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+
+      <div id="grid-view"></div>
+
+      <div class="results" id="results">
+        <p class="results-head" id="results-head"></p>
+        <div class="build-list" id="results-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>How to play a build</h2>
+          <p>Three steps from download to the Battle Bus.</p>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-n">1</div>
+          <h4>Download a build</h4>
+          <p>Find the season you want above and grab the version. Builds are large, so give it some time.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-n">2</div>
+          <h4>Extract it</h4>
+          <p>Unzip the download with 7-Zip or WinRAR into a folder with a short path, like <code>C:\Builds\12.41</code>.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-n">3</div>
+          <h4>Launch it</h4>
+          <p>Point your launcher of choice at the extracted folder and start the game.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="section-head"><div><h2>FAQ</h2></div></div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Which build should I pick?</summary>
+          <p>Each season's last version is usually the most complete one, with all of the season's map changes and items. Earlier versions are good if you want a specific event or a launch-week map.</p>
+        </details>
+        <details class="reveal">
+          <summary>Why is a download button greyed out?</summary>
+          <p>That build is listed but its link hasn't been added yet. Check back later.</p>
+        </details>
+        <details class="reveal">
+          <summary>How much space do I need?</summary>
+          <p>Older Chapter 1 builds are smaller; Chapter 2 builds can be much bigger. Leave room for both the download and the extracted folder.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:1.2rem"><span class="logo-mark" style="width:22px;height:22px"></span>TILTED</div>
+    <div>Fan-made archive. Not affiliated with or endorsed by Epic Games. Fortnite is a trademark of Epic Games, Inc.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="modal-top" id="m-top">
+      <button class="modal-close" id="m-close" aria-label="Close">&times;</button>
+      <div class="k" id="m-k"></div>
+      <h3 id="m-title"></h3>
+      <p id="m-sub"></p>
+    </div>
+    <div class="modal-body"><div class="build-list" id="m-list"></div></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   EDIT YOUR BUILDS HERE
+   ---------------------------------------------------------------------
+   Each season has a list of builds. For each build:
+     v    = version number (shown on the site)
+     size = optional, e.g. "24.3 GB"
+     note = optional, e.g. "Season launch" or "Last build of the season"
+     url  = your download link. Leave it "" and the button shows "Soon".
+   The build count on each card is worked out from this list
+   (if the list is empty it falls back to `count`).
+   ===================================================================== */
+const SEASONS = [
+  // ---------------- CHAPTER 2 ----------------
+  { group: "ch2", chapter: "Chapter 2", name: "Season 2", num: "2", theme: "Top Secret",
+    dates: "Feb – Jun 2020", downloads: 34700, count: 11, c1: "#ff3d6e", c2: "#5b21ff",
+    builds: [
+      { v: "12.00", note: "Season launch", url: "" },
+      { v: "12.10", url: "" },
+      { v: "12.20", url: "" },
+      { v: "12.21", url: "" },
+      { v: "12.30", url: "" },
+      { v: "12.40", url: "" },
+      { v: "12.41", note: "Travis Scott event", url: "" },
+      { v: "12.50", url: "" },
+      { v: "12.60", url: "" },
+      { v: "12.61", note: "The Device event · last build of the season", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 1", num: "1", theme: "New World",
+    dates: "Oct 2019 – Feb 2020", downloads: 7083, count: 11, c1: "#22d3ee", c2: "#2563eb",
+    builds: [
+      { v: "11.00", note: "Season launch", url: "" },
+      { v: "11.01", url: "" },
+      { v: "11.10", url: "" },
+      { v: "11.11", url: "" },
+      { v: "11.20", url: "" },
+      { v: "11.21", url: "" },
+      { v: "11.30", url: "" },
+      { v: "11.31", note: "Winterfest", url: "" },
+      { v: "11.40", url: "" },
+      { v: "11.50", note: "Last build of the season", url: "" },
+    ] },
+
+  // ---------------- CHAPTER 1 ----------------
+  { group: "ch1", chapter: "Chapter 1", name: "Season X", num: "X", theme: "Out of Time",
+    dates: "Aug – Oct 2019", downloads: 20000, count: 7, c1: "#f43f5e", c2: "#111827",
+    builds: [
+      { v: "10.00", note: "Season launch", url: "" },
+      { v: "10.10", url: "" },
+      { v: "10.20", url: "" },
+      { v: "10.30", url: "" },
+      { v: "10.31", url: "" },
+      { v: "10.40", note: "The End event", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 9", num: "9", theme: "The Future Is Now",
+    dates: "May – Aug 2019", downloads: 16600, count: 9, c1: "#38bdf8", c2: "#7c3aed",
+    builds: [
+      { v: "9.00", note: "Season launch", url: "" },
+      { v: "9.01", url: "" },
+      { v: "9.10", url: "" },
+      { v: "9.20", url: "" },
+      { v: "9.21", url: "" },
+      { v: "9.30", url: "" },
+      { v: "9.40", url: "" },
+      { v: "9.41", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 8", num: "8", theme: "X Marks the Spot",
+    dates: "Feb – May 2019", downloads: 8179, count: 6, c1: "#f97316", c2: "#7f1d1d",
+    builds: [
+      { v: "8.00", note: "Season launch", url: "" },
+      { v: "8.01", url: "" },
+      { v: "8.10", url: "" },
+      { v: "8.11", url: "" },
+      { v: "8.20", url: "" },
+      { v: "8.30", url: "" },
+      { v: "8.40", url: "" },
+      { v: "8.50", url: "" },
+      { v: "8.51", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 7", num: "7", theme: "You Better Watch Out",
+    dates: "Dec 2018 – Feb 2019", downloads: 9157, count: 5, c1: "#a5f3fc", c2: "#0e7490",
+    builds: [
+      { v: "7.00", note: "Season launch", url: "" },
+      { v: "7.01", url: "" },
+      { v: "7.10", note: "14 Days of Fortnite", url: "" },
+      { v: "7.20", url: "" },
+      { v: "7.30", url: "" },
+      { v: "7.40", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 6", num: "6", theme: "Darkness Rises",
+    dates: "Sep – Dec 2018", downloads: 9065, count: 14, c1: "#a855f7", c2: "#1e1b4b",
+    builds: [
+      { v: "6.00", note: "Season launch", url: "" },
+      { v: "6.01", url: "" },
+      { v: "6.02", url: "" },
+      { v: "6.10", url: "" },
+      { v: "6.20", note: "Fortnitemares", url: "" },
+      { v: "6.21", url: "" },
+      { v: "6.22", url: "" },
+      { v: "6.30", url: "" },
+      { v: "6.31", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 5", num: "5", theme: "Worlds Collide",
+    dates: "Jul – Sep 2018", downloads: 6735, count: 8, c1: "#facc15", c2: "#b45309",
+    builds: [
+      { v: "5.00", note: "Season launch", url: "" },
+      { v: "5.01", url: "" },
+      { v: "5.10", url: "" },
+      { v: "5.20", url: "" },
+      { v: "5.21", url: "" },
+      { v: "5.30", url: "" },
+      { v: "5.40", url: "" },
+      { v: "5.41", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 4", num: "4", theme: "Superheroes",
+    dates: "May – Jul 2018", downloads: 13700, count: 8, c1: "#ef4444", c2: "#1d4ed8",
+    builds: [
+      { v: "4.0", note: "Season launch", url: "" },
+      { v: "4.1", url: "" },
+      { v: "4.2", url: "" },
+      { v: "4.3", url: "" },
+      { v: "4.4", url: "" },
+      { v: "4.4.1", url: "" },
+      { v: "4.5", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 3", num: "3", theme: "Space Explorers",
+    dates: "Feb – Apr 2018", downloads: 38700, count: 8, c1: "#6366f1", c2: "#0f172a",
+    builds: [
+      { v: "3.0", note: "Season launch", url: "" },
+      { v: "3.1", url: "" },
+      { v: "3.2", url: "" },
+      { v: "3.3", url: "" },
+      { v: "3.4", url: "" },
+      { v: "3.5", url: "" },
+      { v: "3.6", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 2", num: "2", theme: "Medieval",
+    dates: "Dec 2017 – Feb 2018", downloads: 5780, count: 7, c1: "#84cc16", c2: "#365314",
+    builds: [
+      { v: "1.11", note: "Season launch", url: "" },
+      { v: "2.1.0", url: "" },
+      { v: "2.2.0", url: "" },
+      { v: "2.3.0", url: "" },
+      { v: "2.4.0", url: "" },
+      { v: "2.4.2", url: "" },
+      { v: "2.5.0", note: "Last build of the season", url: "" },
+    ] },
+  { group: "ch1", chapter: "Chapter 1", name: "Season 1", num: "1", theme: "Where it all began",
+    dates: "Oct – Dec 2017", downloads: 9334, count: 6, c1: "#60a5fa", c2: "#1e3a8a",
+    builds: [
+      { v: "1.8", note: "Season launch", url: "" },
+      { v: "1.8.1", url: "" },
+      { v: "1.8.2", url: "" },
+      { v: "1.9", url: "" },
+      { v: "1.9.1", url: "" },
+      { v: "1.10", note: "Last build of the season", url: "" },
+    ] },
+
+  // ---------------- LEGACY ----------------
+  { group: "legacy", chapter: "Legacy", name: "Pre Season", num: "0", theme: "Before Season 1",
+    dates: "2017", downloads: 5527, count: 3, c1: "#94a3b8", c2: "#334155",
+    builds: [] },
+  { group: "legacy", chapter: "Legacy", name: "Online Testing", num: "OT", theme: "Early test builds",
+    dates: "2017", downloads: 4067, count: 4, c1: "#d4d4d8", c2: "#3f3f46",
+    builds: [] },
+];
+
+const GROUPS = [
+  { id: "all", label: "All" },
+  { id: "ch2", label: "Chapter 2" },
+  { id: "ch1", label: "Chapter 1" },
+  { id: "legacy", label: "Legacy" },
+];
+
+/* =====================================================================
+   SITE CODE — you shouldn't need to touch anything below
+   ===================================================================== */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (n) => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M"
+                  : n >= 1e4 ? (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K"
+                  : n.toLocaleString();
+const buildCount = (s) => s.builds.length || s.count || 0;
+
+let activeGroup = "all";
+
+function renderStats() {
+  const builds = SEASONS.reduce((a, s) => a + buildCount(s), 0);
+  const dls = SEASONS.reduce((a, s) => a + (s.downloads || 0), 0);
+  $("#stats").innerHTML = [
+    [builds, "Builds archived"],
+    [fmt(dls), "Total downloads"],
+    [SEASONS.length, "Seasons"],
+  ].map(([b, l]) => `<div class="stat"><b>${b}</b><span>${l}</span></div>`).join("");
+}
+
+function renderFilters() {
+  $("#filters").innerHTML = GROUPS.map((g) =>
+    `<button class="chip${g.id === activeGroup ? " active" : ""}" data-g="${g.id}">${g.label}</button>`
+  ).join("");
+}
+
+function seasonCard(s, i) {
+  const idx = SEASONS.indexOf(s);
+  return `
+    <button class="season reveal" data-i="${idx}" style="--c1:${s.c1};--c2:${s.c2};transition-delay:${Math.min(i, 8) * 40}ms">
+      <div class="season-art">
+        <span class="season-tag">${esc(s.chapter)}</span>
+        <span class="season-num">${esc(s.num)}</span>
+      </div>
+      <div class="season-body">
+        <div class="season-name">${esc(s.name)}</div>
+        <div class="season-theme">${esc(s.theme)} · ${esc(s.dates)}</div>
+        <div class="season-meta">
+          <span><b>${buildCount(s)}</b> builds</span>
+          <span><b>${fmt(s.downloads)}</b> downloads</span>
+          <span class="season-go">→</span>
+        </div>
+      </div>
+    </button>`;
+}
+
+function renderGrid() {
+  const groups = GROUPS.filter((g) => g.id !== "all" && (activeGroup === "all" || activeGroup === g.id));
+  $("#grid-view").innerHTML = groups.map((g) => {
+    const list = SEASONS.filter((s) => s.group === g.id);
+    if (!list.length) return "";
+    return `
+      <div class="chapter">
+        <div class="chapter-title">${g.label} <small>${list.length} seasons</small></div>
+        <div class="grid">${list.map(seasonCard).join("")}</div>
+      </div>`;
+  }).join("");
+  observeReveals();
+}
+
+function buildRow(b, s, showSeason) {
+  const sub = [showSeason ? `${s.chapter} · ${s.name}` : null, b.note, b.size].filter(Boolean).join(" · ");
+  const dl = b.url
+    ? `<a class="dl" href="${esc(b.url)}" target="_blank" rel="noopener">
+         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>Download</a>`
+    : `<span class="dl off" title="Link not added yet">Soon</span>`;
+  return `
+    <div class="build">
+      <span class="build-ver" style="color:${s.c1}">${esc(b.v)}</span>
+      <div class="build-info">
+        <div class="t">Version ${esc(b.v)}</div>
+        ${sub ? `<div class="s">${esc(sub)}</div>` : ""}
+      </div>
+      <div class="build-actions">
+        <button class="icon-btn" data-copy="${esc(b.v)}" title="Copy version" aria-label="Copy version ${esc(b.v)}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        </button>
+        ${dl}
+      </div>
+    </div>`;
+}
+
+function openSeason(i) {
+  const s = SEASONS[i];
+  const top = $("#m-top");
+  top.style.setProperty("--c1", s.c1);
+  top.style.setProperty("--c2", s.c2);
+  $("#m-k").textContent = s.chapter;
+  $("#m-title").textContent = s.name;
+  $("#m-sub").textContent = `${s.theme} · ${s.dates} · ${buildCount(s)} builds · ${fmt(s.downloads)} downloads`;
+  $("#m-list").innerHTML = s.builds.length
+    ? s.builds.map((b) => buildRow(b, s, false)).join("")
+    : `<div class="empty">Builds for this season are being added soon.</div>`;
+  $("#modal").classList.add("open");
+  $("#modal").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  $("#m-close").focus();
+}
+
+function closeModal() {
+  $("#modal").classList.remove("open");
+  $("#modal").setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function runSearch(q) {
+  q = q.trim().toLowerCase();
+  const grid = $("#grid-view"), res = $("#results");
+  if (!q) { grid.style.display = ""; res.classList.remove("show"); return; }
+  const hits = [];
+  SEASONS.forEach((s) => {
+    const seasonMatch = `${s.chapter} ${s.name} ${s.theme}`.toLowerCase().includes(q);
+    s.builds.forEach((b) => {
+      if (seasonMatch || b.v.toLowerCase().includes(q) || (b.note || "").toLowerCase().includes(q)) hits.push([b, s]);
+    });
+  });
+  grid.style.display = "none";
+  res.classList.add("show");
+  $("#results-head").textContent = `${hits.length} build${hits.length === 1 ? "" : "s"} matching “${q}”`;
+  $("#results-list").innerHTML = hits.length
+    ? hits.map(([b, s]) => buildRow(b, s, true)).join("")
+    : `<div class="empty">No builds found. Try a version like <b>9.41</b> or a season like <b>Season X</b>.</div>`;
+}
+
+let toastTimer;
+function toast(msg) {
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 1600);
+}
+
+let io;
+function observeReveals() {
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    return;
+  }
+  io = io || new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".reveal:not(.in)").forEach((el) => io.observe(el));
+}
+
+/* events */
+document.addEventListener("click", (e) => {
+  const chip = e.target.closest(".chip");
+  if (chip) { activeGroup = chip.dataset.g; renderFilters(); renderGrid(); return; }
+
+  const card = e.target.closest(".season");
+  if (card) { openSeason(+card.dataset.i); return; }
+
+  const copy = e.target.closest("[data-copy]");
+  if (copy) {
+    const v = copy.dataset.copy;
+    (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject())
+      .then(() => toast(`Copied ${v}`))
+      .catch(() => toast(v));
+    return;
+  }
+
+  if (e.target.id === "modal" || e.target.closest("#m-close")) closeModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    if ($("#modal").classList.contains("open")) closeModal();
+    else if (document.activeElement === $("#q")) { $("#q").value = ""; runSearch(""); $("#q").blur(); }
+  }
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
+    e.preventDefault();
+    $("#q").focus();
+  }
+});
+
+$("#q").addEventListener("input", (e) => {
+  runSearch(e.target.value);
+  if (e.target.value && window.scrollY < $("#builds").offsetTop - 80) {
+    $("#builds").scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+renderStats();
+renderFilters();
+renderGrid();
+observeReveals();
+</script>
 </body>
 </html>
