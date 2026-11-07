@@ -17,7 +17,6 @@ Drop one image per season in this folder using these exact names (.jpg, landscap
 | c1s2.jpg | Chapter 1 Season 2 |
 | c1s1.jpg | Chapter 1 Season 1 |
 | preseason.jpg | Pre Season |
-| online-testing.jpg | Online Testing |
 
 Missing images are fine — that card just shows its colour gradient.
 Want a different file name or .png? Change the `art:` path for that season in `index.html`.
