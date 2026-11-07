@@ -29,6 +29,10 @@ In `index.html`, set `DISCORD_URL` (just above the `SEASONS` list) to your invit
 
 `DONATE_URL` (next to `DISCORD_URL`) sets every Support button. New visitors see a welcome popup once; set `SHOW_WELCOME = false` to turn it off.
 
+## Launcher download
+
+Set `LAUNCHER_URL` (next to `DONATE_URL`) to your launcher's download link and the **Download Launcher** buttons appear (top section, welcome popup, How-to step 3). Leave it `""` to hide them.
+
 ## Season cover art
 
 Put images in `assets/seasons/` — see the README in that folder for the file names.

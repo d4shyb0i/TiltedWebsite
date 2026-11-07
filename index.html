@@ -358,6 +358,10 @@
   .cta-row .discord-cta { flex-direction: column; align-items: flex-start; justify-content: center; }
   .cta-row .discord-cta .btn { margin-left: 0; }
 
+  .btn-launcher { background: var(--text); color: var(--bg); }
+  .launcher-link[hidden] { display: none !important; }
+  .launcher-note { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+
   /* welcome popup */
   .welcome .modal-card { max-width: 460px; text-align: center; }
   .welcome-top {
@@ -450,6 +454,7 @@
       <a href="#builds" class="btn btn-primary">Browse builds
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
+      <a href="#" class="btn btn-launcher launcher-link" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 7.5v6M9 11l3 3 3-3M8 21h8"/></svg>Download Launcher</a>
       <a href="#" class="btn btn-discord discord-link" target="_blank" rel="noopener"><img src="assets/discord.png" alt="">Join the Discord</a>
       <a href="#" class="btn btn-ghost donate-link" target="_blank" rel="noopener" style="color:var(--accent)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5v2.5M12 2.5v2.5"/></svg>Support Tilted</a>
     </div>
@@ -499,7 +504,8 @@
         <div class="step reveal">
           <div class="step-n">3</div>
           <h4>Launch it</h4>
-          <p>Point your launcher of choice at the extracted folder and start the game.</p>
+          <p>Open the Tilted launcher, point it at the extracted folder and start the game.</p>
+          <a href="#" class="btn btn-launcher launcher-link" hidden style="height:40px;margin-top:14px;font-size:0.9rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 7.5v6M9 11l3 3 3-3M8 21h8"/></svg>Download Launcher</a>
         </div>
       </div>
     </div>
@@ -578,6 +584,7 @@
     </div>
     <div class="welcome-body">
       <a href="#" class="btn btn-discord discord-link" target="_blank" rel="noopener"><img src="assets/discord.png" alt="">Join the Discord</a>
+      <a href="#" class="btn btn-launcher launcher-link" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 7.5v6M9 11l3 3 3-3M8 21h8"/></svg>Just get the launcher</a>
       <a href="#" class="btn btn-donate donate-link" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5v2.5M12 2.5v2.5"/></svg>Support Tilted</a>
       <button class="welcome-skip" id="w-skip">Maybe later, take me to the builds</button>
     </div>
@@ -606,6 +613,9 @@ const DISCORD_URL = "https://discord.gg/projecttilted";
 /* Your donation link, and whether to show the welcome popup on someone's first visit */
 const DONATE_URL = "https://buymeacoffee.com/projecttilted";
 const SHOW_WELCOME = true;
+
+/* Launcher download link. Leave "" to hide every launcher button. */
+const LAUNCHER_URL = "https://github.com/Sacttt/ProjectTilted/releases/download/v0.4.18/Project-Tilted-v0.4.18.exe";
 
 /* Cover art: drop an image in assets/seasons/ with the file name shown in
    each season's `art` field (e.g. assets/seasons/c2s2.jpg). If the file
@@ -932,6 +942,11 @@ SEASONS.forEach((s, i) => {
 
 document.querySelectorAll(".discord-link").forEach((a) => { a.href = DISCORD_URL; });
 document.querySelectorAll(".donate-link").forEach((a) => { a.href = DONATE_URL; });
+document.querySelectorAll(".launcher-link").forEach((a) => {
+  if (!LAUNCHER_URL) return;
+  a.href = LAUNCHER_URL;
+  a.hidden = false;
+});
 
 /* welcome popup: shows once per visitor */
 function closeWelcome() {
