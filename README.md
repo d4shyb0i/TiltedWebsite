@@ -19,6 +19,14 @@ Each build looks like this:
 
 Season cards, totals, search and the build popup all update automatically.
 
+## Discord link
+
+In `index.html`, set `DISCORD_URL` (just above the `SEASONS` list) to your invite link. It updates all three Discord buttons.
+
+## Season cover art
+
+Put images in `assets/seasons/` — see the README in that folder for the file names.
+
 ## Hosting
 
 Turn on GitHub Pages (Settings → Pages → Deploy from branch → `main` / root) and the site is live.
