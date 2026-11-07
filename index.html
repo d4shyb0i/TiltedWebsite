@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tilted — OG Fortnite Build Archive</title>
-<meta name="description" content="Download old Fortnite builds from Chapter 1 and Chapter 2, sorted by season.">
+<meta name="description" content="Download old Fortnite builds from Chapter 1 to Chapter 3, one per season.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -384,7 +384,7 @@
     </div>
     <label class="search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Search builds (e.g. 12.41)" autocomplete="off" aria-label="Search builds">
+      <input id="q" type="search" placeholder="Search builds (e.g. 12.50)" autocomplete="off" aria-label="Search builds">
       <kbd>/</kbd>
     </label>
     <a class="nav-discord discord-link" href="#" target="_blank" rel="noopener"><img src="assets/discord.png" alt=""><span>Join Discord</span></a>
@@ -395,7 +395,7 @@
   <div class="wrap">
     <span class="eyebrow"><i></i>OG Fortnite build archive</span>
     <h1>Drop back into<br><span class="hl">any season</span></h1>
-    <p class="lead">Every classic Fortnite build from Chapter 1 and Chapter 2, sorted by season. Pick a season, pick a version, hit download.</p>
+    <p class="lead">Classic Fortnite builds from Chapter 1 through Chapter 3, one for every season. Pick a season and hit download.</p>
     <div class="hero-cta">
       <a href="#builds" class="btn btn-primary">Browse builds
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -413,7 +413,7 @@
       <div class="section-head">
         <div>
           <h2>Pick your season</h2>
-          <p>Click a season to see every build in it.</p>
+          <p>Click a season to grab its build.</p>
         </div>
         <div class="filters" id="filters"></div>
       </div>
@@ -444,7 +444,7 @@
         <div class="step reveal">
           <div class="step-n">2</div>
           <h4>Extract it</h4>
-          <p>Unzip the download with 7-Zip or WinRAR into a folder with a short path, like <code>C:\Builds\12.41</code>.</p>
+          <p>Unzip the download with 7-Zip or WinRAR into a folder with a short path, like <code>C:\Builds\12.50</code>.</p>
         </div>
         <div class="step reveal">
           <div class="step-n">3</div>
@@ -461,7 +461,7 @@
       <div class="faq">
         <details class="reveal">
           <summary>Which build should I pick?</summary>
-          <p>Each season's last version is usually the most complete one, with all of the season's map changes and items. Earlier versions are good if you want a specific event or a launch-week map.</p>
+          <p>Every season has one build here, picked as the best version of that season. Just choose the season you want to play.</p>
         </details>
         <details class="reveal">
           <summary>Why are builds downloaded as torrents?</summary>
@@ -534,159 +534,115 @@ const DISCORD_URL = "https://discord.gg/projecttilted";
    each season's `art` field (e.g. assets/seasons/c2s2.jpg). If the file
    isn't there, the card just shows its colour gradient instead. */
 const SEASONS = [
-  // ---------------- CHAPTER 2 ----------------
-  { group: "ch2", chapter: "Chapter 2", name: "Season 2", art: "assets/seasons/c2s2.jpg", num: "2", theme: "Top Secret",
-    dates: "Feb – Jun 2020", count: 11, c1: "#ff3d6e", c2: "#5b21ff",
+  // ---------------- CHAPTER 3 ----------------
+  { group: "ch3", chapter: "Chapter 3", name: "Season 1", art: "assets/seasons/c3s1.jpg", num: "1", theme: "Flipped",
+    dates: "Dec 2021 – Mar 2022", c1: "#4ade80", c2: "#0369a1",
     builds: [
-      { v: "12.00", note: "Season launch", url: "" },
-      { v: "12.10", url: "" },
-      { v: "12.20", url: "" },
-      { v: "12.21", url: "" },
-      { v: "12.30", url: "" },
-      { v: "12.40", url: "" },
-      { v: "12.41", note: "Travis Scott event", url: "" },
-      { v: "12.50", url: "" },
-      { v: "12.60", url: "" },
-      { v: "12.61", note: "The Device event · last build of the season", url: "" },
+      { v: "19.00", magnet: "", url: "" },
+    ] },
+  // ---------------- CHAPTER 2 ----------------
+  { group: "ch2", chapter: "Chapter 2", name: "Season 8", art: "assets/seasons/c2s8.jpg", num: "8", theme: "Cubed",
+    dates: "Sep – Dec 2021", c1: "#c084fc", c2: "#312e81",
+    builds: [
+      { v: "18.40", magnet: "", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 7", art: "assets/seasons/c2s7.jpg", num: "7", theme: "Invasion",
+    dates: "Jun – Sep 2021", c1: "#22c55e", c2: "#14532d",
+    builds: [
+      { v: "17.50", magnet: "", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 6", art: "assets/seasons/c2s6.jpg", num: "6", theme: "Primal",
+    dates: "Mar – Jun 2021", c1: "#f59e0b", c2: "#78350f",
+    builds: [
+      { v: "16.40", magnet: "", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 5", art: "assets/seasons/c2s5.jpg", num: "5", theme: "Zero Point",
+    dates: "Dec 2020 – Mar 2021", c1: "#e879f9", c2: "#1e3a8a",
+    builds: [
+      { v: "15.10", magnet: "", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 4", art: "assets/seasons/c2s4.jpg", num: "4", theme: "Nexus War",
+    dates: "Aug – Dec 2020", c1: "#dc2626", c2: "#1f2937",
+    builds: [
+      { v: "14.50", magnet: "", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 3", art: "assets/seasons/c2s3.jpg", num: "3", theme: "Splash Down",
+    dates: "Jun – Aug 2020", c1: "#06b6d4", c2: "#0c4a6e",
+    builds: [
+      { v: "13.40", magnet: "", url: "" },
+    ] },
+  { group: "ch2", chapter: "Chapter 2", name: "Season 2", art: "assets/seasons/c2s2.jpg", num: "2", theme: "Top Secret",
+    dates: "Feb – Jun 2020", c1: "#ff3d6e", c2: "#5b21ff",
+    builds: [
+      { v: "12.50", magnet: "", url: "" },
     ] },
   { group: "ch2", chapter: "Chapter 2", name: "Season 1", art: "assets/seasons/c2s1.jpg", num: "1", theme: "New World",
-    dates: "Oct 2019 – Feb 2020", count: 11, c1: "#22d3ee", c2: "#2563eb",
+    dates: "Oct 2019 – Feb 2020", c1: "#22d3ee", c2: "#2563eb",
     builds: [
-      { v: "11.00", note: "Season launch", url: "" },
-      { v: "11.01", url: "" },
-      { v: "11.10", url: "" },
-      { v: "11.11", url: "" },
-      { v: "11.20", url: "" },
-      { v: "11.21", url: "" },
-      { v: "11.30", url: "" },
-      { v: "11.31", note: "Winterfest", url: "" },
-      { v: "11.40", url: "" },
-      { v: "11.50", note: "Last build of the season", url: "" },
+      { v: "11.00", magnet: "", url: "" },
     ] },
-
   // ---------------- CHAPTER 1 ----------------
   { group: "ch1", chapter: "Chapter 1", name: "Season X", art: "assets/seasons/c1s10.jpg", num: "X", theme: "Out of Time",
-    dates: "Aug – Oct 2019", count: 7, c1: "#f43f5e", c2: "#111827",
+    dates: "Aug – Oct 2019", c1: "#f43f5e", c2: "#111827",
     builds: [
-      { v: "10.00", note: "Season launch", url: "" },
-      { v: "10.10", url: "" },
-      { v: "10.20", url: "" },
-      { v: "10.30", url: "" },
-      { v: "10.31", url: "" },
-      { v: "10.40", note: "The End event", url: "" },
+      { v: "10.31", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 9", art: "assets/seasons/c1s9.jpg", num: "9", theme: "The Future Is Now",
-    dates: "May – Aug 2019", count: 9, c1: "#38bdf8", c2: "#7c3aed",
+    dates: "May – Aug 2019", c1: "#38bdf8", c2: "#7c3aed",
     builds: [
-      { v: "9.00", note: "Season launch", url: "" },
-      { v: "9.01", url: "" },
-      { v: "9.10", url: "" },
-      { v: "9.20", url: "" },
-      { v: "9.21", url: "" },
-      { v: "9.30", url: "" },
-      { v: "9.40", url: "" },
-      { v: "9.41", note: "Last build of the season", url: "" },
+      { v: "9.40", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 8", art: "assets/seasons/c1s8.jpg", num: "8", theme: "X Marks the Spot",
-    dates: "Feb – May 2019", count: 6, c1: "#f97316", c2: "#7f1d1d",
+    dates: "Feb – May 2019", c1: "#f97316", c2: "#7f1d1d",
     builds: [
-      { v: "8.00", note: "Season launch", url: "" },
-      { v: "8.01", url: "" },
-      { v: "8.10", url: "" },
-      { v: "8.11", url: "" },
-      { v: "8.20", url: "" },
-      { v: "8.30", url: "" },
-      { v: "8.40", url: "" },
-      { v: "8.50", url: "" },
-      { v: "8.51", note: "Last build of the season", url: "" },
+      { v: "8.50", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 7", art: "assets/seasons/c1s7.jpg", num: "7", theme: "You Better Watch Out",
-    dates: "Dec 2018 – Feb 2019", count: 5, c1: "#a5f3fc", c2: "#0e7490",
+    dates: "Dec 2018 – Feb 2019", c1: "#a5f3fc", c2: "#0e7490",
     builds: [
-      { v: "7.00", note: "Season launch", url: "" },
-      { v: "7.01", url: "" },
-      { v: "7.10", note: "14 Days of Fortnite", url: "" },
-      { v: "7.20", url: "" },
-      { v: "7.30", url: "" },
-      { v: "7.40", note: "Last build of the season", url: "" },
+      { v: "7.40", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 6", art: "assets/seasons/c1s6.jpg", num: "6", theme: "Darkness Rises",
-    dates: "Sep – Dec 2018", count: 14, c1: "#a855f7", c2: "#1e1b4b",
+    dates: "Sep – Dec 2018", c1: "#a855f7", c2: "#1e1b4b",
     builds: [
-      { v: "6.00", note: "Season launch", url: "" },
-      { v: "6.01", url: "" },
-      { v: "6.02", url: "" },
-      { v: "6.10", url: "" },
-      { v: "6.20", note: "Fortnitemares", url: "" },
-      { v: "6.21", url: "" },
-      { v: "6.22", url: "" },
-      { v: "6.30", url: "" },
-      { v: "6.31", note: "Last build of the season", url: "" },
+      { v: "6.2", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 5", art: "assets/seasons/c1s5.jpg", num: "5", theme: "Worlds Collide",
-    dates: "Jul – Sep 2018", count: 8, c1: "#facc15", c2: "#b45309",
+    dates: "Jul – Sep 2018", c1: "#facc15", c2: "#b45309",
     builds: [
-      { v: "5.00", note: "Season launch", url: "" },
-      { v: "5.01", url: "" },
-      { v: "5.10", url: "" },
-      { v: "5.20", url: "" },
-      { v: "5.21", url: "" },
-      { v: "5.30", url: "" },
-      { v: "5.40", url: "" },
-      { v: "5.41", note: "Last build of the season", url: "" },
+      { v: "5.1", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 4", art: "assets/seasons/c1s4.jpg", num: "4", theme: "Superheroes",
-    dates: "May – Jul 2018", count: 8, c1: "#ef4444", c2: "#1d4ed8",
+    dates: "May – Jul 2018", c1: "#ef4444", c2: "#1d4ed8",
     builds: [
-      { v: "4.0", note: "Season launch", url: "" },
-      { v: "4.1", url: "" },
-      { v: "4.2", url: "" },
-      { v: "4.3", url: "" },
-      { v: "4.4", url: "" },
-      { v: "4.4.1", url: "" },
-      { v: "4.5", note: "Last build of the season", url: "" },
+      { v: "4.5", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 3", art: "assets/seasons/c1s3.jpg", num: "3", theme: "Space Explorers",
-    dates: "Feb – Apr 2018", count: 8, c1: "#6366f1", c2: "#0f172a",
+    dates: "Feb – Apr 2018", c1: "#6366f1", c2: "#0f172a",
     builds: [
-      { v: "3.0", note: "Season launch", url: "" },
-      { v: "3.1", url: "" },
-      { v: "3.2", url: "" },
-      { v: "3.3", url: "" },
-      { v: "3.4", url: "" },
-      { v: "3.5", url: "" },
-      { v: "3.6", note: "Last build of the season", url: "" },
+      { v: "3.5.1", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 2", art: "assets/seasons/c1s2.jpg", num: "2", theme: "Medieval",
-    dates: "Dec 2017 – Feb 2018", count: 7, c1: "#84cc16", c2: "#365314",
+    dates: "Dec 2017 – Feb 2018", c1: "#84cc16", c2: "#365314",
     builds: [
-      { v: "1.11", note: "Season launch", url: "" },
-      { v: "2.1.0", url: "" },
-      { v: "2.2.0", url: "" },
-      { v: "2.3.0", url: "" },
-      { v: "2.4.0", url: "" },
-      { v: "2.4.2", url: "" },
-      { v: "2.5.0", note: "Last build of the season", url: "" },
+      { v: "1.11", magnet: "", url: "" },
     ] },
   { group: "ch1", chapter: "Chapter 1", name: "Season 1", art: "assets/seasons/c1s1.jpg", num: "1", theme: "Where it all began",
-    dates: "Oct – Dec 2017", count: 6, c1: "#60a5fa", c2: "#1e3a8a",
+    dates: "Oct – Dec 2017", c1: "#60a5fa", c2: "#1e3a8a",
     builds: [
-      { v: "1.8", note: "Season launch", url: "" },
-      { v: "1.8.1", url: "" },
-      { v: "1.8.2", url: "" },
-      { v: "1.9", url: "" },
-      { v: "1.9.1", url: "" },
-      { v: "1.10", note: "Last build of the season", url: "" },
+      { v: "1.8.2", magnet: "", url: "" },
     ] },
-
   // ---------------- LEGACY ----------------
   { group: "legacy", chapter: "Legacy", name: "Pre Season", art: "assets/seasons/preseason.jpg", num: "0", theme: "Before Season 1",
-    dates: "2017", count: 3, c1: "#94a3b8", c2: "#334155",
-    builds: [] },
+    dates: "2017", c1: "#94a3b8", c2: "#334155",
+    builds: [
+      { v: "1.7.2", magnet: "", url: "" },
+    ] },
 ];
 
 const GROUPS = [
   { id: "all", label: "All" },
+  { id: "ch3", label: "Chapter 3" },
   { id: "ch2", label: "Chapter 2" },
   { id: "ch1", label: "Chapter 1" },
   { id: "legacy", label: "Legacy" },
@@ -700,7 +656,7 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&
 const fmt = (n) => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M"
                   : n >= 1e4 ? (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K"
                   : n.toLocaleString();
-const buildCount = (s) => s.builds.length || s.count || 0;
+const buildCount = (s) => s.builds.length;
 
 let activeGroup = "all";
 
@@ -731,7 +687,7 @@ function seasonCard(s, i) {
         <div class="season-name">${esc(s.name)}</div>
         <div class="season-theme">${esc(s.theme)} · ${esc(s.dates)}</div>
         <div class="season-meta">
-          <span><b>${buildCount(s)}</b> builds</span>
+          <span>${s.builds.length === 1 ? `Version <b>${esc(s.builds[0].v)}</b>` : `<b>${buildCount(s)}</b> builds`}</span>
           <span class="season-go">→</span>
         </div>
       </div>
@@ -745,7 +701,7 @@ function renderGrid() {
     if (!list.length) return "";
     return `
       <div class="chapter">
-        <div class="chapter-title">${g.label} <small>${list.length} seasons</small></div>
+        <div class="chapter-title">${g.label} <small>${list.length} season${list.length === 1 ? "" : "s"}</small></div>
         <div class="grid">${list.map(seasonCard).join("")}</div>
       </div>`;
   }).join("");
@@ -789,7 +745,7 @@ function openSeason(i) {
   top.style.setProperty("--art", artOk[i] ? `url('${s.art}')` : "none");
   $("#m-k").textContent = s.chapter;
   $("#m-title").textContent = s.name;
-  $("#m-sub").textContent = `${s.theme} · ${s.dates} · ${buildCount(s)} builds`;
+  $("#m-sub").textContent = `${s.theme} · ${s.dates} · ${s.builds.length === 1 ? "Version " + s.builds[0].v : buildCount(s) + " builds"}`;
   $("#m-list").innerHTML = s.builds.length
     ? s.builds.map((b) => buildRow(b, s, false)).join("")
     : `<div class="empty">Builds for this season are being added soon.</div>`;
@@ -821,7 +777,7 @@ function runSearch(q) {
   $("#results-head").textContent = `${hits.length} build${hits.length === 1 ? "" : "s"} matching “${q}”`;
   $("#results-list").innerHTML = hits.length
     ? hits.map(([b, s]) => buildRow(b, s, true)).join("")
-    : `<div class="empty">No builds found. Try a version like <b>9.41</b> or a season like <b>Season X</b>.</div>`;
+    : `<div class="empty">No builds found. Try a version like <b>9.40</b> or a season like <b>Season X</b>.</div>`;
 }
 
 let toastTimer;

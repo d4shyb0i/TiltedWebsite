@@ -4,6 +4,13 @@ Drop one image per season in this folder using these exact names (.jpg, landscap
 
 | File | Season |
 |---|---|
+| c3s1.jpg | Chapter 3 Season 1 |
+| c2s8.jpg | Chapter 2 Season 8 |
+| c2s7.jpg | Chapter 2 Season 7 |
+| c2s6.jpg | Chapter 2 Season 6 |
+| c2s5.jpg | Chapter 2 Season 5 |
+| c2s4.jpg | Chapter 2 Season 4 |
+| c2s3.jpg | Chapter 2 Season 3 |
 | c2s2.jpg | Chapter 2 Season 2 |
 | c2s1.jpg | Chapter 2 Season 1 |
 | c1s10.jpg | Chapter 1 Season X |

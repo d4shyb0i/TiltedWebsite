@@ -9,7 +9,7 @@ Everything lives in `index.html`. Scroll to the `SEASONS` list near the bottom (
 Each build looks like this:
 
 ```js
-{ v: "12.41", note: "Travis Scott event", size: "26 GB", magnet: "magnet:?xt=urn:btih:...", url: "" },
+{ v: "12.50", size: "26 GB", magnet: "magnet:?xt=urn:btih:...", url: "" },
 ```
 
 - `v` – version number
