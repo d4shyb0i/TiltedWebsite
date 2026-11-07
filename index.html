@@ -1,9 +1,255 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Builds Archive</title>
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: #131722;
+            --text-main: #ffffff;
+            --text-muted: #848d9a;
+            --accent-blue: #0070f3;
+            --border-color: #202632;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .archive-container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .chapter-section {
+            margin-bottom: 35px;
+        }
+
+        .chapter-header {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chapter-header span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--card-bg);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .season-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .season-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .season-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .season-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item strong {
+            color: var(--text-main);
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World! My site is working.</h1>
+
+    <div class="archive-container">
+        <header>
+            <h1>Fortnite Build Archive</h1>
+            <p>Explore standalone historical archive builds, download statistics, and metadata.</p>
+        </header>
+
+        <!-- CHAPTER 2 -->
+        <section class="chapter-section">
+            <div class="chapter-header">
+                <h2>Chapter 2</h2>
+                <span>Showing partial data</span>
+            </div>
+            <div class="season-grid">
+                <div class="season-card">
+                    <div class="season-title">Season 2</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>34.7K</strong></div>
+                        <div class="meta-item">Builds: <strong>11</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 1</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>7,083</strong></div>
+                        <div class="meta-item">Builds: <strong>11</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 1 -->
+        <section class="chapter-section">
+            <div class="chapter-header">
+                <h2>Chapter 1</h2>
+                <span>10 Seasons</span>
+            </div>
+            <div class="season-grid">
+                <div class="season-card">
+                    <div class="season-title">Season X</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>20K</strong></div>
+                        <div class="meta-item">Builds: <strong>7</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 9</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>16.6K</strong></div>
+                        <div class="meta-item">Builds: <strong>9</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 8</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>8,179</strong></div>
+                        <div class="meta-item">Builds: <strong>6</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 7</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>9,157</strong></div>
+                        <div class="meta-item">Builds: <strong>5</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 6</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>9,065</strong></div>
+                        <div class="meta-item">Builds: <strong>14</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 5</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>6,735</strong></div>
+                        <div class="meta-item">Builds: <strong>8</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 4</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>13.7K</strong></div>
+                        <div class="meta-item">Builds: <strong>8</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 3</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>38.7K</strong></div>
+                        <div class="meta-item">Builds: <strong>8</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 2</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>5,780</strong></div>
+                        <div class="meta-item">Builds: <strong>7</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Season 1</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>9,334</strong></div>
+                        <div class="meta-item">Builds: <strong>6</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EARLY FORTNITE -->
+        <section class="chapter-section">
+            <div class="chapter-header">
+                <h2>Fortnite Legacy</h2>
+                <span>Pre-Seasons</span>
+            </div>
+            <div class="season-grid">
+                <div class="season-card">
+                    <div class="season-title">Pre Season</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>5,527</strong></div>
+                        <div class="meta-item">Builds: <strong>3</strong></div>
+                    </div>
+                </div>
+                <div class="season-card">
+                    <div class="season-title">Online Testing</div>
+                    <div class="meta-row">
+                        <div class="meta-item">Downloads: <strong>4,067</strong></div>
+                        <div class="meta-item">Builds: <strong>4</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
 </body>
 </html>
